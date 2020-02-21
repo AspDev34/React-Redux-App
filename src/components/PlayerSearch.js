@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { get_data } from '../actions/actions';
+import { get_data, update_player } from '../actions/actions';
 
 const PlayerSearch = (props) => {
 
@@ -9,10 +9,17 @@ const PlayerSearch = (props) => {
         props.get_data();
     };
 
+    const handleById = (event) => {
+        event.preventDefault();
+        props.update_player(1);
+    };
+
 
     return (
         <>
-        {!props.isFetchingData ? (<div>!!we are fetching data!!</div>) : (<button onClick={handleGetData}>get data</button>)}
+        {props.isFetchingData ? (<div>!!we are fetching data!!</div>) : (<button onClick={handleGetData}>get player</button>)}
+
+        {props.isFetchingData ? (<div>!!we are fetching data!!</div>) : (<button onClick={handleById}>get player by id</button>)}
             
         </>
     );
@@ -24,4 +31,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { get_data })(PlayerSearch);
+export default connect(mapStateToProps, { get_data, update_player })(PlayerSearch);
