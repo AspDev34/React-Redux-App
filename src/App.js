@@ -9,6 +9,8 @@ import { playerReducer } from './reducers/playerReducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
+//Web28 submission
+
 
 const store = createStore(playerReducer, applyMiddleware(thunk, logger));
 
